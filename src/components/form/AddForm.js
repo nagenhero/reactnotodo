@@ -5,21 +5,35 @@ const initialState={
   hr:"",
 };
 
-export const AddForm = (addTaskList) => {
-  
-
+export const AddForm = ({addToTaskList}) => {
+  const [newInfo,setNewInfo]=useState(initialState);
+  const handleChange =e=>
+  {
+    const{name,value}=e.target;
+    setNewInfo(
+      {
+        ...newInfo,
+        [name]:value,
+      }
+    )
+  }
+  const handleSubmit=e=>
+  {
+    e.preventDefault();
+    addToTaskList(newInfo);
+  }
   return (
     <div>
-    <Form >
+    <Form onSubmit={handleSubmit} >
   <Row className='g-2'>
     <Col md={7}>
-      <Form.Control name="task" placeholder="Task"  required/>
+      <Form.Control name="task" placeholder="Task"  required onChange={handleChange}/>
     </Col>
     <Col md={3}>
-      <Form.Control name="hr" placeholder="Hour" required />
+      <Form.Control name="hr" placeholder="Hour" required onChange={handleChange} />
     </Col >
     <Col md={3}>
-    <Button variant="primary">Add TASK</Button>
+    <Button variant="primary" type='submit'>Add TASK</Button>
     </Col>
   </Row>
 </Form>

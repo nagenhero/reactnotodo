@@ -2,7 +2,7 @@
 import React from 'react'
 import { Col, Form, Row, Table,Button } from 'react-bootstrap'
 
-export const BadList = () => {
+export const BadList = ({badLists}) => {
   return (
     <div > 
         
@@ -13,10 +13,15 @@ export const BadList = () => {
                 <Table striped  hover>
   
   <tbody>
-  <tr>
+    {
+    badLists.map((item,i)=>(
+
+    
+
+  <tr key={i}>
     <td><Form.Check type="checkbox" label="Check me out" /></td>
-  <td>task name</td>
-  <td>10hr</td>
+  <td>{item.task}</td>
+  <td>{item.hr}</td>
   
   <td>
   <Button variant="primary"><i className="fas fa-arrow-left"></i></Button> 
@@ -26,7 +31,7 @@ export const BadList = () => {
          
   </td>
 </tr>
-    
+    ))}
     
   </tbody>
 </Table>

@@ -12,10 +12,34 @@ import { BadList } from './components/task-list/BadList';
 const App=() =>{
   //state to store all the task lists
   const[taskLists,setTaskLists]=useState([]);
-  const addToTaskList=taskObj=>
+  const[badList,setBadList]=useState([]);
+  const addToTaskList=newInfo=>
   {
-    setTaskLists([...taskLists,taskObj]);
+    setTaskLists([...taskLists,newInfo]);
   }
+
+  // remove items from the task list
+  const removeFromTaskList=i=>
+  {
+   // alert(i);
+   const filterdArg=taskLists.filter((item,index)=> index!==i);
+   setTaskLists(filterdArg);
+  }
+   //shift to bad list
+   const shiftToBadList=i=>
+   {
+     const item=taskLists[i];
+    setBadList([...badList,item])
+     //get the item  that to be shofted
+     //add the item in the bad list
+     //remove the item formn the task list
+     removeFromTaskList(i)
+   }
+  
+  
+   
+    
+  
   return (
   <div className='wrapper'>
     <Container>
@@ -29,8 +53,11 @@ const App=() =>{
     {/* task list componts */}
     <Row>
       <Col md="6">
-      <TaskList/></Col>
-      <Col md="6"> <BadList/></Col>
+      <TaskList taskLists={taskLists}
+      removeFromTaskList={removeFromTaskList}
+      shiftToBadList={shiftToBadList}/>
+      </Col>
+      <Col md="6"> <BadList badLists={badList}/></Col>
     </Row>
     {/* total hour alloction'
      */}
