@@ -30,7 +30,7 @@ export const BadList = () => {
     
   </tbody>
 </Table>
-<h4 classNameNmae="mt-5"> YOU COULD HAVE SAVED :20HRS
+<h4 className="mt-5 text-danger"> YOU COULD HAVE SAVED :20HRS
 
 </h4>
             
