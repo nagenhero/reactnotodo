@@ -24,6 +24,7 @@ export const TaskList = () => {
                 <h2 className='text-center'>Bad list</h2>
                 <hr/>
                 {/* this table for bad lsit */}
+               
                 <Table striped  hover>
   
   <tbody>

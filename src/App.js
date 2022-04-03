@@ -9,12 +9,7 @@ import React from 'react';
 import { isCursorAtStart } from '@testing-library/user-event/dist/utils';
 
 const App=() =>{
-  //state to store all the task lists
-  const[taskLists,setTaskLists]=useState([]);
-  const addToTaskList=taskObj=>
-  {
-    setTaskLists([...taskLists,taskObj]);
-  }
+  
   return (
   <div className='wrapper'>
     <Container>
@@ -22,7 +17,7 @@ const App=() =>{
       <Title /> 
  
       {/* form componet */}
-      <AddForm addToTaskList={addToTaskList}/>
+      <AddForm />
       <hr/>
       
     {/* task list componts */}
