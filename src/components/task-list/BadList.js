@@ -2,7 +2,7 @@
 import React from 'react'
 import { Col, Form, Row, Table,Button } from 'react-bootstrap'
 
-export const BadList = ({badLists}) => {
+export const BadList = ({badLists,removeFromBadList,shiftToTaskList, badListTotalHr}) => {
   return (
     <div > 
         
@@ -24,10 +24,10 @@ export const BadList = ({badLists}) => {
   <td>{item.hr}</td>
   
   <td>
-  <Button variant="primary"><i className="fas fa-arrow-left"></i></Button> 
+  <Button variant="primary" onClick={()=>shiftToTaskList(i)}><i className="fas fa-arrow-left"></i></Button> 
   </td>
   <td>
-  <Button variant="danger"><i className="fas fa-trash"></i></Button> 
+  <Button variant="danger" onClick={()=>removeFromBadList(i)}><i className="fas fa-trash"></i></Button> 
          
   </td>
 </tr>
@@ -35,7 +35,7 @@ export const BadList = ({badLists}) => {
     
   </tbody>
 </Table>
-<h4 className="mt-5 text-danger"> YOU COULD HAVE SAVED :20HRS
+<h4 className="mt-5 text-danger"> YOU COULD HAVE SAVED :{ badListTotalHr} HRS
 
 </h4>
             
